@@ -60,6 +60,7 @@ io.on('connection', function(socket){
      }); 
     });
 
+let port = 4040;
 app.listen(process.env.PORT || 4000, function () {
     console.log("Server running at port= " + port);
 });
