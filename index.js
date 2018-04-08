@@ -60,7 +60,7 @@ io.on('connection', function(socket){
      }); 
     });
 
-http.listen(4000, function(){
-  console.log('listening on *:4000');
+app.listen(process.env.PORT || 4000, function () {
+    console.log("Server running at port= " + port);
 });
     
