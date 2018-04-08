@@ -6,12 +6,8 @@ app.get("/", function (req, resp) {
     resp.send("Making MSN Messenger great again");
 });
 
-app.use(function (req, resp, next) {
-    resp.setHeader('Access-Control-Allow-Origin', "*");
-    
-    next();
-    
-});
+var cors = require('cors');    
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
@@ -19,7 +15,9 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(4000, function(){
-  console.log('listening on *:4000');
+// Use express to listen to port
+let port = 4000;
+app.listen(process.env.PORT || 4000, function () {
+    console.log("Server running at port= " + port);
 });
     
